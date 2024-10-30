@@ -1,0 +1,430 @@
+@import url("../App.css");
+
+/* ---------------Hero-------------*/
+#heroText {
+  font-family: "notable", sans-serif;
+  font-size: 6vw;
+ /*  -webkit-text-stroke: 0.5px white; For WebKit browsers */
+  text-shadow:
+  -0.3px -0.3px 0 white,
+  0.3px -0.3px 0 white,
+  -0.3px  0.3px 0 white,
+  0.3px  0.3px 0 white;
+}
+
+#heroPicture {
+  width: calc(100vw - 16px); /*minus scroll bar*/
+  height: 100vh;
+  object-fit: cover;
+  opacity: 0.8;
+  /* position: absolute; */
+}
+
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--black);
+}
+
+/*----------------Benefits---------------------*/
+.greenText {
+  color: var(--primary-dark);
+}
+
+.horizontalText {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+}
+
+#benefitsSection {
+  display: flex;
+  flex-direction: column;
+  padding: 2% 0% 2% 0%; /*space between sections*/
+}
+
+.horizontalFlex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 3%;
+}
+
+#benefitsText-1 {
+  max-width: 45%;
+  padding: 2%;
+}
+
+#benefitsText-2 {
+  max-width: 30%;
+  padding: 2%;
+}
+
+.benefitsImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.imageContainer {
+  max-width: 40%;
+}
+
+.padding2 {
+  padding: 2%;
+}
+
+/* Responsiveness */
+@media (max-width: 810px) {
+  .horizontalFlex {
+    flex-direction: column;
+  }
+
+  .imageContainer {
+    max-width: 60%;
+  }
+
+  #benefitsText-1,
+  #benefitsText-2 {
+    max-width: 100%;
+    padding: 20%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+}
+
+/* -------------Introducing: "We are ..."--------------*/
+
+#introduceSection {
+  margin: 5%;
+  margin-top: 2em;
+}
+.introduceContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4%; /*space between two sections*/
+}
+
+.introducingPlusPic {
+  height: 100%;
+  width: auto;
+  overflow: hidden;
+}
+
+.introduceBox {
+  position: relative;
+  width: 30%;
+  height: 350px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.introduceBox > img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: all 0.3s ease;
+}
+
+.appearingTextBox {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  padding: 2% 0% 2% 0%;
+  transition: all 0.3s ease;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.headlineIntroBox {
+  color: var(--secondary-light);
+  margin: 0;
+}
+
+.descriptionIntroBox {
+  color: var(--white);
+  display: none;
+}
+
+.introduceBox:hover .appearingTextBox {
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.introduceBox:hover .descriptionIntroBox {
+  display: block; /* Beschreibung beim Hover anzeigen */
+  margin-top: 10px;
+}
+
+.appearingAdditionalInfoText {
+  max-height: fit-content;
+  transition: max-height 0.4s ease;
+}
+
+/*for the rotating plus*/
+.rotateOnHover {
+  transition: transform 0.3s ease; /* Übergangseffekt für Drehung */
+}
+
+.rotateOnHover:hover {
+  transform: rotate(360deg); /* Drehung beim Hovern */
+}
+.right {
+  float: right;
+}
+/*                    ... and you are? Section           */
+
+.slide > img {
+  vertical-align: middle;
+  width: 100%;
+}
+
+#pictureSlidingContainer {
+  position: relative;
+  margin: auto;
+}
+
+/* Two arrow buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  color: var(--white);
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 10px 10px 0;
+  user-select: none;
+}
+
+.next {
+  right: 0;
+  border-radius: 10px 0 0 10px;
+}
+
+.prev:hover,
+.next:hover {
+  background-color: var(--black);
+  color: var(--primary-mid);
+}
+
+/* The dots */
+#dotContainer {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: var(--gray-mid);
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active,
+.dot:hover {
+  background-color: var(--gray-darkest);
+}
+
+@media only screen and (max-width: 300px) {
+  .prev,
+  .next {
+    font-size: 11px;
+  }
+}
+
+/*             Comment Section             */
+.commentbox {
+  width: 80%;
+  max-height: 180px;
+  min-height: 130px;
+  background-color: var(--white);
+  border-radius: 20px;
+  border-width: 10px;
+  border: 3px solid var(--black);
+  display: flex;
+  gap: 4%;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 60px;
+  position: relative;
+}
+
+/* Create the "pop"/"shadow"-effect
+Creates a psydo element before the commentbox
+with z-index it is moved to the back
+*/
+.commentbox::before {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary-mid);
+  border-radius: 20px;
+  border: 3px solid var(--black);
+  z-index: -1;
+}
+
+#commenterContainer {
+  display: flex;
+  justify-self: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+#commentContainer {
+  gap: 40px;
+}
+
+#commentText {
+  font-size: 20px;
+  font-style: italic;
+  padding: 25px;
+  line-height: 1.5;
+}
+
+@media only screen and (max-width: 910px) {
+  #commentText {
+    font-size: 18px;
+  }
+}
+@media only screen and (max-width: 810px) {
+  #commentText {
+    font-size: 16px;
+  }
+}
+@media only screen and (max-width: 700px) {
+  #commentText {
+    font-size: 1.5vw;
+  }
+}
+
+.cropCircle {
+  border-radius: 50%;
+  border-color: transparent;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+}
+
+.cropCircle img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+#shadowBox {
+  position: relative;
+  z-index: -1;
+  right: 120px;
+}
+
+/* Two arrow buttons of comment section*/
+#pre,
+#post {
+  cursor: pointer;
+  font-size: 35px;
+  transition: 0.6s ease;
+  border-radius: 10px;
+  user-select: none;
+  color: black;
+}
+
+#pre:hover,
+#post:hover {
+  background-color: var(--primary-mid);
+}
+
+/*           Call To Action            */
+
+.bigText {
+  font-weight: bold;
+  font-size: 24px;
+  margin: 5px;
+}
+
+#ctaContainer {
+  margin: 2%;
+  padding-top: 2%;
+}
+
+#ctaBtnContainer {
+  margin: 2%;
+}
+
+/*                  Highlight Section        */
+.horizontalText > h1 {
+  margin-bottom: 0;
+}
+#highlightBoxContainer {
+  justify-content: space-around;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.highlightImageContainer {
+  width: 100%;
+  height: 60%;
+  background-color: black;
+  overflow: hidden;
+}
+
+.highlightImageContainer > img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  opacity: 0.9;
+}
+
+.highlightInfoTextContainer {
+  width: 100%;
+  height: 30%;
+}
+
+.highlightImageBox {
+  width: 350px;
+  height: 300px;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  background-color: var(--secondary-mid);
+  margin: 2%;
+}
+
+.highlightImageBox:hover {
+  transform: scale(1.05) translateY(-10px);
+  box-shadow: 0 10px 20px var(--gray-mid);
+}
+
+.highlightInfoTextContainer {
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 15%;
+  gap: 5%;
+}

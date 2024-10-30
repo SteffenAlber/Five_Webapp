@@ -1,0 +1,5 @@
+from models.engagements.engagementBaseModel import EngagementBaseModel
+from models.organizations.organizationDiscreteModel import OrganizationDiscreteModel
+
+class CertificateEngagementModel(EngagementBaseModel):
+    organizer: OrganizationDiscreteModel

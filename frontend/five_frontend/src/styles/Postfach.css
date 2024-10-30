@@ -1,0 +1,68 @@
+.mailbox-container {
+  margin: 20px;
+  padding: 20px;
+  margin-top: 3%;
+  padding-top: 70px;
+}
+
+.unread-count {
+  color: var(--primary-mid);
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.message-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.message-item {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  background-color: var(--gray-lightest);
+  border-radius: 10px;
+  border: 1px solid var(--gray-light);
+}
+
+.message-item.unread {
+  background-color: var(--primary-light);
+  border: 2px solid var(--primary-mid);
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  background-color: var(--primary-dark);
+  color: var(--white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-right: 20px;
+  flex-shrink: 0;  /* Prevents squashing */
+}
+
+.message-content {
+  flex-grow: 1;
+}
+
+.message-name {
+  font-size: 1.5em;
+  color: var(--primary-darkest);
+}
+
+.message-text {
+  color: var(--gray-darkest);
+  font-size: 1em;
+  margin-top: 5px;
+}
+
+.message-item:hover {
+  cursor: pointer;
+  background-color: var(--primary-lightest);
+  transition: background-color 0.3s;
+}

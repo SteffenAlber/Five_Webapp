@@ -1,0 +1,70 @@
+.authBackground{
+    height: 100vh;
+    background: linear-gradient(to right, #ffffff 35%, #96DDB2 35%);
+    overflow: auto;
+}
+
+.authFormOuterContainer{
+    width: 70vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.authFormContainer{
+    margin-top: 5vh;
+    margin-bottom: 8vh;
+    background-color: #bbbbbb;
+    border-radius: 10px;
+    width: 40vw;
+    min-width: 350px;
+    max-width: 700px;
+    padding: 0 3rem 5rem 3rem;
+}
+
+.authForm{
+    display: flex;
+    flex-direction: column;
+}
+.authForm input {
+    padding: 0.6rem !important;
+    border-radius: 25px !important;
+    border-color: transparent !important;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 0.75rem;
+    margin-top: 0.2rem;
+}
+
+
+.authDoubleInput{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.authInput{
+    padding: 0.6rem !important;
+    border-radius: 25px !important;
+    border-color: transparent !important;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 0.75rem;
+    margin-top: 0.2rem;
+}
+
+.authLink{
+    margin-top: 5px;
+}
+
+.checkbox{
+    display: flex;
+    align-items: center;
+    margin: 1rem 0 0.5rem 0;
+}
+
+.checkboxLabel{
+    margin-left: 0.5rem;
+    font-size: 0.8rem;
+}

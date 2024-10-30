@@ -1,0 +1,146 @@
+.social-organization-page {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    margin-top: 3%;
+}
+
+.social-organization-page .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.social-organization-page h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.social-organization-page p {
+    margin-bottom: 20px;
+    margin-top: 40px;
+}
+
+.social-organization-page .button-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.social-organization-page .button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.social-organization-page .login {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.social-organization-page .register {
+    background-color: white;
+    color: black;
+    border: 1px solid #ccc;
+}
+
+.social-organization-page h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.social-organization-page .benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 40px;
+}
+
+.social-organization-page .benefit {
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    align-items: flex-start;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #e0e0e0;
+}
+
+.social-organization-page .benefit:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.social-organization-page .benefit-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-organization-page .benefit-icon img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.social-organization-page .benefit-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.social-organization-page .benefit-title {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.social-organization-page .benefit-subtext {
+    font-size: 0.9em;
+    color: #555;
+}
+
+.social-organization-page .cta {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    margin-top: 80px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.social-organization-page .cta::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    z-index: -1;
+}
+
+.social-organization-page .cta p {
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-size: 1.2em; /* Increased font size */
+}
+
+.social-organization-page .cta-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1em;
+}

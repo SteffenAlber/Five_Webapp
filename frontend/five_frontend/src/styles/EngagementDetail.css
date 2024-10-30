@@ -1,0 +1,262 @@
+/* Container */
+#mainDetailContainer {
+  width: 100%;
+  position: relative;
+  margin-bottom: 30%;
+  height: 600px;
+  padding-top: 80px; 
+  padding-bottom: 100px; 
+  margin-top: 40px;
+}
+
+/* Non-Editing Mode: Fixed Height */
+#mainDetailContainer.nonEditingMode {
+  height: 300px;
+  max-height: 300px;
+}
+
+/* Editing Mode: Flexible Height */
+#mainDetailContainer.editingMode {
+  height: auto;
+  min-height: 700px; 
+  overflow: visible; 
+}
+
+#mainDetailContainer.editingMode #detailContainer {
+  max-height: 90vh; /* Limit the height to 80% of the viewport height */
+  overflow-y:inherit; /* Enable vertical scrolling if content exceeds the max height */
+}
+
+#detailContainer {
+  width: 100%;
+  max-width: 800px;
+  margin: 0px auto 50px auto;
+  padding: 20px;
+  position: relative;
+}
+
+/* Top Buttons */
+.buttonGroup {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+/* Main Content */
+.mainContent {
+  width: 100%;
+  display: flex;
+  justify-content: left;
+  position: relative;
+  text-align: left;
+}
+
+/* Offer Box */
+#offerBoxE {
+  width: 100%;
+  max-width: 500px;
+  background-color: var(--white);
+  border: 1px solid var(--gray-light);
+  padding: 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  text-align: left; 
+  box-sizing: border-box;
+  position: relative;
+  z-index: 0; 
+}
+
+
+
+/* Input and Textarea Styles */
+#offerBoxE input[type="text"],
+#offerBoxE textarea {
+  width: 100%;
+  padding: 5px;
+  margin-top: 5px;
+  box-sizing: border-box;
+  border: 1px solid var(--gray-light);
+  border-radius: 4px;
+  color: var(--black);
+  text-align: left;
+}
+
+#offerBoxE textarea {
+  resize: vertical;
+}
+
+
+/* Bands Container */
+.bandsContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  z-index: 0; 
+  margin-top: -25em; /* Adjust to position bands at mid-level of the card */
+}
+
+/* Band Styles */
+.bandContainer {
+  width: 100%;
+  display: flex; 
+  height: 100px;
+  position: relative;
+}
+
+.bandBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.acceptedBand .bandBackground {
+  background-color: var(--primary-light);
+}
+
+.pendingBand .bandBackground {
+  background-color: var(--secondary-light);
+}
+
+/* Left Half of the Band */
+.bandLeft {
+  flex: 1.75; 
+}
+
+/* Right Half of the Band */
+.bandRight {
+  flex: 1; 
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; 
+  padding-left: 20px; 
+  position: relative;
+  z-index: 0; 
+}
+
+/* Band Content */
+.bandContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; 
+  color: var(--black);
+  font-family: "DMSans", sans-serif; 
+}
+
+.bandContent h4 {
+  margin: 0;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--black);
+}
+
+.bandContent p {
+  color: var(--black);
+}
+
+.userAvatarContainer {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Avatar Styles */
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--gray-light);
+  cursor: pointer;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Popup Styles */
+.popupProfile {
+  position: absolute;
+  background-color: var(--white);
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  width: 220px;
+  z-index: 1;
+  text-align: left;
+  color: var(--black);
+  justify-content: flex-end;
+}
+
+.popupProfile h5,
+.popupProfile p {
+  margin: 0 0 10px;
+  font-size: 14px;
+  color: var(--black);
+}
+
+.popupButtons {
+  display: flex;
+  justify-content: center;
+}
+
+#name{
+  padding-left: 20px;
+  font-size: 18px;
+}
+
+
+#Button{
+  padding: 10px 10px; 
+  font-size: 14px; 
+}
+
+.acceptButton,
+.ghostButton {
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  flex: 1;
+  margin: 0 5px;
+}
+
+.acceptButton {
+  background-color: var(--primary-mid);
+  color: var(--white);
+  border: none;
+}
+
+.ghostButton {
+  background-color: transparent;
+  border: 1px solid var(--tertiary-mid);
+  color: var(--tertiary-mid);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .bandContainer {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .bandLeft,
+  .bandRight {
+    width: 100%;
+  }
+
+  .bandRight {
+    padding-left: 0;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bandContent {
+    align-items: center; 
+  }
+}

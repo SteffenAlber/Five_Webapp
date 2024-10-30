@@ -1,0 +1,108 @@
+@font-face {
+  font-family: notable;
+  src: url("https://fonts.googleapis.com/css2?family=Notable&display=swap");
+}
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #ffffff;
+  position: fixed; 
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  font-family: 'Notable', Arial, sans-serif;
+  font-weight: bold;
+}
+
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  width: 67px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.nav-link {
+  color: #1B8060; /* Default color for inactive links */
+  text-decoration: none;
+}
+
+.nav-link.active {
+  color: #1B8060; /* Color for active links - change this to your preferred highlight color */
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: #1B8060; /* Default color for inactive links */
+  text-decoration: none;
+  transition: color 0.3s ease; 
+  font-size: 16px;
+  padding: 5px 10px; 
+}
+
+.nav-links a:hover {
+  color: #3ac794; /* Color for hover state - a slightly darker blue */
+}
+
+.nav-links a.active {
+  color: #3ac794; /* Color for active links */
+  font-weight: bold;
+}
+
+/* Ensure no background is applied */
+.nav-links a,
+.nav-links a:hover,
+.nav-links a:focus,
+.nav-links a.active {
+  background: none;
+}
+
+/* Optional: Add an underline effect on hover and for active state */
+.nav-links a::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #3ac794;
+  transition: width 0.3s;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
+}
+
+.nav-
+.profile {
+  display: flex;
+  align-items: center;
+}
+
+.profile-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  /* border: 2px solid #227f61; */
+  border: 2px solid #1B8060;
+  transition: border-color 0.3s ease;
+}
+
+.profile-img:hover {
+  border: 2px solid #3ac794;
+}

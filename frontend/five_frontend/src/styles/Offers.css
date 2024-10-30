@@ -1,0 +1,336 @@
+/* src/styles/Offers.css */
+
+#volunteerOffersSection > h1 {
+  margin-bottom: 20px;
+  padding-top: 60px;
+}
+
+#volunteerOffersSection2 > h1 {
+  margin-bottom: 40px;
+  padding-top: 90px;
+  padding-left: 60px;
+}
+
+.filterButtonContainer {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.offerContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  flex: 1;
+}
+
+#offerBox {
+  width: 590px;
+  background-color: var(--white);
+  border: 1px solid var(--gray-dark);
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: auto;
+}
+
+#offerBox:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+#bottomContainer {
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#titleWork {
+  margin-bottom: 8px;
+  font-size: 1.2em;
+}
+
+#backgroundInfoTextRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  color: var(--gray-darkest);
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+
+.winAndTags {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.nextToAnother {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin: 10px 0;
+}
+
+#winContent {
+  margin: 8px 0 10px 0;
+}
+
+#trophyIcon {
+  height: 20px;
+  margin-right: 3px;
+  color: var(--secondary-mid);
+}
+
+.winAndTags .nextToAnother ul {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 12px;
+}
+
+#tagContainer {
+  display: flex;
+  gap: 2px;
+  flex-wrap: wrap;
+  margin-top: 5px;
+  text-align: center;
+}
+
+.tag {
+  border: 1px solid var(--black);
+  border-radius: 4px;
+  padding: 1px 3px;
+  font-size: 8px;
+  color: var(--gray-darkest);
+  min-width: 40px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.requirementsSection {
+  margin-top: 10px;
+}
+
+.requirementsSection p {
+  margin: 0 0 5px 0;
+}
+
+.requirementsSection ul {
+  list-style-type: disc;
+  padding-left: 20px;
+
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  #offerBox {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+  }
+
+  #backgroundInfoTextRow {
+    font-size: 14px;
+  }
+
+  #trophyIcon {
+    height: 20px;
+    margin-right: 3px;
+  }
+
+  .winAndTags {
+    flex-direction: column;
+  }
+
+  .requirementsSection p {
+    font-size: 12px;
+  }
+
+  .requirementsSection ul {
+    font-size: 10px;
+  }
+
+  .tags {
+    font-size: 12px;
+    padding: 1px 2px;
+    min-width: 40px;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: var(--white);
+    border: 0.5px solid var(--gray-darkest);
+    margin: 4px;
+    border-radius: 10px;
+  }
+}
+
+.filterContainer {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 380px;
+  height: 100%;
+  background-color: var(--primary-mid);
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  overflow-y: auto;
+  z-index: 2;
+  padding-top: 90px;
+}
+
+.filterContainer.visible {
+  transform: translateX(0);
+}
+
+@media (max-width: 600px) {
+  .filterContainer {
+    width: 100%;
+  }
+}
+
+.filterHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.closeFilterButton {
+  display: flex;
+  align-self: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--black);
+  padding: 0;
+  margin: 0;
+}
+
+.filterCategoryHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+.filterCategory {
+  cursor: pointer;
+}
+
+.filterCategoryContent {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.filterCategoryContent .tagInterest {
+  background-color: var(--gray-lightest);
+  padding: 10px 15px;
+  border-radius: 15px;
+  cursor: pointer;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  width: fit-content;
+  font-size: 12px;
+  margin: 3px 7px 3px 0px;
+  color: var(--gray-darkest);
+}
+
+.filterCategoryContent .tagInterest.active {
+  background-color: var(--secondary-dark);
+  color: var(--black);
+}
+
+.centerOnlyHorizontallyWithSpaceBetween {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+}
+
+.marginRight {
+  margin-right: 20px;
+}
+
+.tagContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+}
+
+.interestsTxt {
+  width: 100%;
+}
+
+.inputWithIcon {
+  position: relative;
+  display: inline-block;
+}
+
+.inputWithIcon input {
+  padding-left: 30px;
+}
+
+.searchIcon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: var(--gray-dark);
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.gridItem {
+  padding: 20px;
+  text-align: center;
+  border-top: 2px solid var(--primary-mid);
+}
+
+.offerInformationHeadline {
+  color: var(--primary-mid);
+}
+
+.additionalOfferInfoText {
+  color: var(--gray-dark);
+  size: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.setToOppositeEnds {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tags {
+  font-size: 12px;
+  padding: 1px 2px;
+  min-width: 40px;
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: var(--white);
+  border: 0.5px solid var(--gray-darkest);
+  margin: 4px;
+  border-radius: 10px;
+}
