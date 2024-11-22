@@ -14,6 +14,8 @@ import VolunteerOfferBox from "./VolunteerOfferBox";
 import Navbar from "../layout/Layout";
 import { doGetRequest } from "../../backendInterface/BackendInterface";
 import TimeSelectionGrid from "./TimeSelectionGrid";
+import mockEngagementData from "./mockEngagementData"; 
+
 
 const VolunteerOffers = () => {
   // State variables to control filter activation
@@ -175,7 +177,7 @@ const VolunteerOffers = () => {
     }));
   };
 
-  // Fetch engagements from backend
+ /* // Fetch engagements from backend
   useEffect(() => {
     fetchEngagementData();
     // Obtain user location for distance filtering
@@ -193,8 +195,7 @@ const VolunteerOffers = () => {
       );
     }
   }, []);
-
-
+*/
 
   useEffect(() => {
     const storedAvailability = JSON.parse(localStorage.getItem("availability"));
@@ -215,7 +216,14 @@ const VolunteerOffers = () => {
     setActiveTags(activeTagsFromStorage);
   }, []);
 
-  const fetchEngagementData = async () => {
+  useEffect(() => {
+    // Set mock data instead of fetching from backend
+    setOffers(mockEngagementData);
+  }, []);
+
+
+
+  /*const fetchEngagementData = async () => {
     try {
       const response = await doGetRequest("/engagements/");
       console.log("Fetched Engagements:", response.data.engagements);
@@ -224,6 +232,7 @@ const VolunteerOffers = () => {
       console.error("Error fetching engagements:", e);
     }
   };
+  */
 
   // Helper functions for filtering
   const getDayOfWeekString = (dateString) => {
