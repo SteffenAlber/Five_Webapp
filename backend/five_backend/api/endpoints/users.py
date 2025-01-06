@@ -5,7 +5,7 @@ from models.user.userEngagementsModel import UserEngagementsModel
 from models.user.userOpenReturnModel import UserOpenReturnModel
 from models.user.userLoginModel import UserLoginModel
 
-from backend.five_backend.api.utils.jw_utils import create_access_token, verify_access_token, JWToken
+from backend.five_backend.api.utils.jwt_utils import create_access_token, verify_access_token, JWToken
 
 from dbOperations import users as userDB
 
@@ -24,17 +24,17 @@ async def getUserById(user_id : str):
     user = await userDB.getUserById(user_id)
     return user
 
-@router.put(
+@router.post(
     "/",
     response_description="List of all users",
     response_model=UserCollectionModel,
     response_model_by_alias=False,
     summary= "Get a list of all existing users")
-async def readAllUsers(token: str = Depends(oauth2_scheme)):
-    try:
-        verify_access_token(token)
-    except Exception as e:
-        raise HTTPException(status_code=401, detail=f"Not authenticated")
+async def readAllUsers():#token: str = Depends(oauth2_scheme)):
+    #try:
+    #    verify_access_token(token)
+    #except Exception as e:
+    #    raise HTTPException(status_code=401, detail=f"Not authenticated")
 
     return UserCollectionModel(users = await userDB.readAllUsers())
 

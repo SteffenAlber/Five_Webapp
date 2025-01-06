@@ -8,6 +8,7 @@ from models.user.userEngagementsModel import UserEngagementsModel
 from models.user.userOpenReturnModel import UserOpenReturnModel
 from bson import ObjectId
 from dbOperations import engagements as engagementDB
+from backend.five_backend.api.utils.jwt_utils import create_access_token
 
 dbUsers = mongoClient.get_database("users")
 collectionUsers = dbUsers.get_collection("users")
@@ -43,6 +44,7 @@ async def createNewUser(user : UserModel):
 
 async def loginUser(user : UserLoginModel):
     existingUser = await collectionUsers.find_one({"username": user.username})
+
     await syncEngagements(str(existingUser["_id"]))
     if not existingUser:
         raise HTTPException(status_code=400, detail="Username or password invalid")
@@ -51,12 +53,22 @@ async def loginUser(user : UserLoginModel):
         raise HTTPException(status_code=400, detail="Username or password invalid")
 
     await syncEngagements(str(existingUser["_id"]))
-    updatedUser = await collectionUsers.find_one({"username": user.username})
 
-    __convertId(updatedUser)
-    await __getEngagementsForUser(updatedUser)
+    __convertId(existingUser)
+    existingUser.setdefault("is_admin", False)
 
-    userModel = UserOpenReturnModel.parse_obj(updatedUser)
+    if existingUser["is_admin"]:
+        existingUser["jwt"] = create_access_token({"is_admin": "true"})
+    else:
+        existingUser["jwt"] = create_access_token({"is_admin": "false"})
+        await __getEngagementsForUser(existingUser)
+    try:
+        userModel = UserOpenReturnModel.parse_obj(existingUser)
+        print(existingUser)
+        print("------------")
+        print(userModel)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to parse user model: {str(e)}")
 
     return userModel
 

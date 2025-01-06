@@ -6,3 +6,4 @@ class UserOpenReturnModel(UserDiscreteModel):
     applications: list[EngagementExtendedModel]
     upcomingEngagements: list[EngagementExtendedModel]
     previousEngagements: list[str] = Field([], examples=["id of the previous engagements"])
+    jwt: str = Field(examples=["jwt_token_here"])

@@ -1,20 +1,26 @@
-import sys
-import os
-from backend.five_backend.dbOperations import users as userDB
-from backend.five_backend.models.user.userBaseModel import UserBaseModel
-from backend.five_backend.models.user.userModel import UserModel
+from backend.five_backend.dbOperations.dbConfig import get_collection
 import asyncio
+import bcrypt
 
 async def createAdmin():
+    collection = get_collection("users", "users")
 
-    userBaseModel = UserBaseModel(
-        username = "admin",
-        firstName = "admin",
-        lastName = "admin",
-        mailAddress = "")
+    password = "abc123"
 
-    admin = UserModel(userBaseModel)
-    await userDB.createNewUser(admin)
+    salted_pw = bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())
+
+    admin_user = {
+        "username": "realAdmin",
+        "firstName": "Admin",
+        "lastName": "Admin",
+        "mailAddress": "admin@example.com",
+        "is_admin": True,
+        "password": salted_pw
+    }
+
+    print(admin_user)
+
+    await collection.insert_one(admin_user)
 
 if __name__ == "__main__":
     asyncio.run(createAdmin())
