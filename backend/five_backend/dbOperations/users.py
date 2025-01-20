@@ -60,9 +60,9 @@ async def loginUser(user : UserLoginModel):
     jwt = ""
 
     if existingUser["is_admin"]:
-        existingUser["jwt"] = create_access_token({"is_admin": True})
+        jwt = create_access_token({"is_admin": True})
     else:
-        existingUser["jwt"] = create_access_token({"is_admin": False})
+        jwt = create_access_token({"is_admin": False})
         await __getEngagementsForUser(existingUser)
     try:
         userModel = UserOpenReturnModel.parse_obj(existingUser)
@@ -72,7 +72,7 @@ async def loginUser(user : UserLoginModel):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to parse user model: {str(e)}")
 
-    return userModel
+    return userModel, jwt
 
 async def insertApplication(userId : str, engagementId : str):
     object_id = ObjectId(userId)

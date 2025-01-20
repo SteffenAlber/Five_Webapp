@@ -80,5 +80,6 @@ async def createNewUser(user : UserModel):
              summary="Login an existing user"
              )
 async def loginUser(user : UserLoginModel, response: Response):
-    discreteUser = await userDB.loginUser(user)
+    discreteUser, jwt = await userDB.loginUser(user)
+    response.headers["Authorization"] = jwt
     return discreteUser
