@@ -57,10 +57,12 @@ async def loginUser(user : UserLoginModel):
     __convertId(existingUser)
     existingUser.setdefault("is_admin", False)
 
+    jwt = ""
+
     if existingUser["is_admin"]:
-        existingUser["jwt"] = create_access_token({"is_admin": "true"})
+        existingUser["jwt"] = create_access_token({"is_admin": True})
     else:
-        existingUser["jwt"] = create_access_token({"is_admin": "false"})
+        existingUser["jwt"] = create_access_token({"is_admin": False})
         await __getEngagementsForUser(existingUser)
     try:
         userModel = UserOpenReturnModel.parse_obj(existingUser)

@@ -22,6 +22,9 @@ def verify_access_token(token: str):
         raise Exception("Token has expired")
     except jwt.InvalidTokenError:
         raise Exception("Invalid token")
+    except Exception as e:
+        raise Exception("Error while decoding token")
+
 
 
 class JWToken(BaseModel):

@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Header, HTTPException, Depends
+from fastapi import APIRouter, Header, HTTPException, Depends, Response
 from models.user.userCollectionModel import UserCollectionModel
 from models.user.userModel import UserModel
 from models.user.userEngagementsModel import UserEngagementsModel
@@ -30,13 +30,23 @@ async def getUserById(user_id : str):
     response_model=UserCollectionModel,
     response_model_by_alias=False,
     summary= "Get a list of all existing users")
-async def readAllUsers():#token: str = Depends(oauth2_scheme)):
-    #try:
-    #    verify_access_token(token)
-    #except Exception as e:
-    #    raise HTTPException(status_code=401, detail=f"Not authenticated")
+async def readAllUsers(token: str = Depends(oauth2_scheme)):
+    payload = ''
+    try:
+        payload = verify_access_token(token)
+    except Exception as e:
+        raise HTTPException(status_code=401, detail="Not authenticated")
 
-    return UserCollectionModel(users = await userDB.readAllUsers())
+    is_admin = payload.get("is_admin", False)
+
+    if not is_admin:
+        raise HTTPException(status_code=403, detail="Admin privileges required")
+
+    print("User is admin")
+
+    return UserCollectionModel(
+        users = await userDB.readAllUsers()
+    )
 
 @router.post(
     "/superuser",
@@ -69,6 +79,6 @@ async def createNewUser(user : UserModel):
              response_model_by_alias=False,
              summary="Login an existing user"
              )
-async def loginUser(user : UserLoginModel):
+async def loginUser(user : UserLoginModel, response: Response):
     discreteUser = await userDB.loginUser(user)
     return discreteUser
