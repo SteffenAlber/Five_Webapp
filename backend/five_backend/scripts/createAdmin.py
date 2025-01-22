@@ -16,10 +16,7 @@ async def createAdmin():
         "mailAddress": "admin@example.com",
         "is_admin": True,
         "password": salted_pw,
-        "jwt": "jwt_here"
     }
-
-    print(admin_user)
 
     await collection.insert_one(admin_user)
 

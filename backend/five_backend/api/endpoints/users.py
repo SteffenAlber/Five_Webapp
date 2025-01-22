@@ -5,6 +5,8 @@ from models.user.userEngagementsModel import UserEngagementsModel
 from models.user.userOpenReturnModel import UserOpenReturnModel
 from models.user.userLoginModel import UserLoginModel
 
+import jwt
+
 from backend.five_backend.api.utils.jwt_utils import create_access_token, verify_access_token, JWToken
 
 from dbOperations import users as userDB
@@ -31,11 +33,14 @@ async def getUserById(user_id : str):
     response_model_by_alias=False,
     summary= "Get a list of all existing users")
 async def readAllUsers(token: str = Depends(oauth2_scheme)):
-    payload = ''
     try:
         payload = verify_access_token(token)
+    except jwt.ExpiredSignatureError:
+        raise HTTPException(status_code=401, detail="Token has expired")
+    except jwt.InvalidTokenError:
+        raise HTTPException(status_code=401, detail="Token is invalid")
     except Exception as e:
-        raise HTTPException(status_code=401, detail="Not authenticated")
+        raise HTTPException(status_code=401, detail=e)
 
     is_admin = payload.get("is_admin", False)
 
