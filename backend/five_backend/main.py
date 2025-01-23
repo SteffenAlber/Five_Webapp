@@ -22,7 +22,7 @@ app.add_middleware(
 @app.middleware("http")
 async def add_csp_header(request, call_next):
     response = await call_next(request)
-    response.headers["Content-Security-Policy"] = "default-src 'self'; script-src 'self'; object-src 'none';"
+    response.headers["Content-Security-Policy"] = "default-src 'self'; script-src 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self';"
     return response
 
 
