@@ -19,6 +19,28 @@ app.add_middleware(
 )
 
 
+@app.middleware("http")
+async def add_csp_header(request, call_next):
+    response = await call_next(request)
+    response.headers["Content-Security-Policy"] = "default-src 'self'; script-src 'self'; object-src 'none';"
+    return response
+
+
+@app.middleware("http")
+async def add_clickjacking_protection(request, call_next):
+    response = await call_next(request)
+    response.headers["X-Frame-Options"] = "DENY"  # Prevents embedding in iframes
+    return response
+
+
+@app.middleware("http")
+async def add_nosniff_header(request, call_next):
+    response = await call_next(request)
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    return response
+
+
+
 @app.get("/", include_in_schema=False)
 async def root():
     return RedirectResponse(url="/docs")
