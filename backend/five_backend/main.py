@@ -4,11 +4,26 @@ from fastapi.responses import RedirectResponse
 from core.config import *
 from api.endpoints import users, organizations, engagements, certificate
 from dbOperations.dbConfig import mongoClient
+from slowapi import Limiter, _rate_limit_exceeded_handler
+from slowapi.middleware import SlowAPIMiddleware
+from slowapi.util import get_remote_address
+from slowapi.errors import RateLimitExceeded
+
 
 dbUsers = mongoClient.get_database("users")
 collectionUsers = dbUsers.get_collection("users")
 
 app = FastAPI()
+
+# Initialize slowAPI Limiter
+limiter = Limiter(key_func=get_remote_address, application_limits=["10/minute"])
+app.state.limiter = limiter
+
+#SlowAPI middleware for rate limiting
+app.add_middleware(SlowAPIMiddleware)
+
+# Rate Limit Exception Handler
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 app.add_middleware(
     CORSMiddleware,
