@@ -1,4 +1,6 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Request
+from slowapi import Limiter
+from slowapi.util import get_remote_address
 from models.engagements.engagementCreateModel import EngagementCreateModel
 from models.engagements.engagementOpenReturnModel import EngagementOpenReturnModel
 from models.engagements.engagementCollectionModel import EngagementCollectionModel
@@ -8,6 +10,7 @@ from models.engagements.applicants.applicantModel import ApplicantModel
 from dbOperations import engagements as engagementDB
 
 router = APIRouter()
+limiter = Limiter(key_func=get_remote_address)
 
 @router.get(
     "/e/{engagement_id}",
@@ -35,7 +38,8 @@ async def readAllEngagements():
              response_model_by_alias=False,
              summary="Create a new engagement"
              )
-async def createNewEngagement(newEngagement : EngagementCreateModel):
+@limiter.limit("10/minute")
+async def createNewEngagement(request: Request, newEngagement : EngagementCreateModel):
     resultInsert = await engagementDB.createEngagement(newEngagement)
     return resultInsert
 
